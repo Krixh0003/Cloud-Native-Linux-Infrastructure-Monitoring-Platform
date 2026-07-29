@@ -754,12 +754,3 @@ This project is licensed under the **MIT License**. See the `LICENSE` file for m
 
 ---
 
-<div align="center">
-
-## ⭐ If you found this project useful, consider giving it a Star!
-
-### Built with ❤️ using Linux, Prometheus, Grafana, Loki, Docker, AWS & Jenkins
-
-**Enterprise Infrastructure Monitoring • Observability • DevOps • Cloud Computing**
-
-</div>
