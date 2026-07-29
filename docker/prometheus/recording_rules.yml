@@ -1,0 +1,41 @@
+groups:
+  - name: InfrastructureRecordingRules
+
+    rules:
+
+      - record: node:cpu_usage:percent
+        expr: |
+          100 - (
+            avg by(instance)(
+              rate(node_cpu_seconds_total{mode="idle"}[5m])
+            ) * 100
+          )
+
+      - record: node:memory_usage:percent
+        expr: |
+          100 * (
+            1 -
+            (
+              node_memory_MemAvailable_bytes
+              /
+              node_memory_MemTotal_bytes
+            )
+          )
+
+      - record: node:disk_usage:percent
+        expr: |
+          100 - (
+            node_filesystem_avail_bytes{
+              mountpoint="/",
+              fstype!~"tmpfs|overlay"
+            }
+            *100/
+            node_filesystem_size_bytes{
+              mountpoint="/",
+              fstype!~"tmpfs|overlay"
+            }
+          )
+
+      - record: nginx:requests_per_second
+        expr: |
+          rate(nginx_http_requests_total[5m])

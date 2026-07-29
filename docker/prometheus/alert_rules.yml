@@ -1,0 +1,115 @@
+groups:
+  - name: InfrastructureAlerts
+    rules:
+
+      - alert: HighCPUUsage
+        expr: 100 - (avg(rate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > 80
+        for: 2m
+        labels:
+          severity: critical
+          team: Infrastructure
+        annotations:
+          summary: "🔥 High CPU Usage Detected"
+          description: |
+            CPU utilization on {{ $labels.instance }} has exceeded 80% for more than 2 minutes.
+
+            Possible Causes:
+            • High application workload
+            • Infinite loop
+            • Malware or crypto mining
+            • Excessive background processes
+
+            Recommended Actions:
+            • Check running processes using 'top' or 'htop'
+            • Investigate CPU-intensive applications
+            • Restart the affected service if required
+
+      - alert: HighMemoryUsage
+        expr: 100 * (1 - (node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes)) > 85
+        for: 2m
+        labels:
+          severity: warning
+          team: Infrastructure
+        annotations:
+          summary: "🧠 High Memory Usage Detected"
+          description: |
+            Memory utilization on {{ $labels.instance }} has exceeded 85%.
+
+            Possible Causes:
+            • Memory leak
+            • Large application workload
+            • Too many running services
+
+            Recommended Actions:
+            • Check memory usage using 'free -h'
+            • Inspect processes with 'top' or 'htop'
+            • Restart applications if necessary
+
+      - alert: HighDiskUsage
+        expr: |
+          100 - (
+            node_filesystem_avail_bytes{mountpoint="/",fstype!~"tmpfs|overlay"} * 100 /
+            node_filesystem_size_bytes{mountpoint="/",fstype!~"tmpfs|overlay"}
+          ) > 90
+        for: 2m
+        labels:
+          severity: critical
+          team: Infrastructure
+        annotations:
+          summary: "💽 High Disk Usage Detected"
+          description: |
+            Disk usage on {{ $labels.instance }} has exceeded 90%.
+
+            Possible Causes:
+            • Large log files
+            • Backup files
+            • Application data growth
+
+            Recommended Actions:
+            • Check disk usage with 'df -h'
+            • Identify large files using 'du -sh'
+            • Remove unnecessary files or extend storage
+
+      - alert: WebsiteDown
+        expr: probe_success == 0
+        for: 1m
+        labels:
+          severity: critical
+          team: WebServer
+        annotations:
+          summary: "🌐 Website Unreachable"
+          description: |
+            Blackbox Exporter failed to reach the monitored website.
+
+            Possible Causes:
+            • Nginx service stopped
+            • Network issue
+            • Firewall blocking traffic
+            • DNS resolution problem
+
+            Recommended Actions:
+            • Verify Nginx status
+            • Check network connectivity
+            • Review firewall configuration
+            • Inspect web server logs
+
+      - alert: NginxDown
+        expr: nginx_up == 0
+        for: 1m
+        labels:
+          severity: critical
+          team: WebServer
+        annotations:
+          summary: "🚨 Nginx Service Down"
+          description: |
+            Nginx Exporter reports that the Nginx service is unavailable.
+
+            Possible Causes:
+            • Nginx crashed
+            • Configuration error
+            • Port conflict
+
+            Recommended Actions:
+            • Run 'systemctl status nginx'
+            • Restart Nginx
+            • Check '/var/log/nginx/error.log'
