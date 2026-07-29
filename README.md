@@ -1,208 +1,181 @@
 # 🚀 Cloud-Native Enterprise Infrastructure Monitoring, Log Management & Automation Platform
 
-![Status](https://img.shields.io/badge/Status-Active-brightgreen)
-![Platform](https://img.shields.io/badge/Platform-Linux-blue)
-![Monitoring](https://img.shields.io/badge/Prometheus-Monitoring-orange)
-![Visualization](https://img.shields.io/badge/Grafana-Dashboard-red)
-![Logging](https://img.shields.io/badge/Loki-Logging-purple)
-![Cloud](https://img.shields.io/badge/AWS-Cloud-yellow)
-![Automation](https://img.shields.io/badge/Jenkins-CI%2FCD-red)
-![License](https://img.shields.io/badge/License-MIT-green)
+> **An enterprise-grade monitoring, observability, and automation platform demonstrating the evolution from traditional infrastructure monitoring to a modern cloud-native deployment.**
+
+![Linux](https://img.shields.io/badge/Linux-Ubuntu%20|%20Debian%20|%20CentOS-E95420?style=for-the-badge&logo=linux&logoColor=white)
+![Prometheus](https://img.shields.io/badge/Prometheus-Monitoring-E6522C?style=for-the-badge&logo=prometheus&logoColor=white)
+![Grafana](https://img.shields.io/badge/Grafana-Dashboards-F46800?style=for-the-badge&logo=grafana&logoColor=white)
+![Loki](https://img.shields.io/badge/Loki-Logging-0A84FF?style=for-the-badge)
+![Docker](https://img.shields.io/badge/Docker-Containerization-2496ED?style=for-the-badge&logo=docker)
+![AWS](https://img.shields.io/badge/AWS-Cloud-FF9900?style=for-the-badge&logo=amazonaws)
+![Jenkins](https://img.shields.io/badge/Jenkins-CI%2FCD-D24939?style=for-the-badge&logo=jenkins)
 
 ---
 
-# 📖 Project Overview
+# 📖 Overview
 
-The **Cloud-Native Enterprise Infrastructure Monitoring, Log Management & Automation Platform** is an enterprise-grade monitoring, logging, visualization, and automation solution designed to monitor Linux-based infrastructure using open-source technologies.
+The **Cloud-Native Enterprise Infrastructure Monitoring, Log Management & Automation Platform** is a comprehensive observability solution designed to monitor enterprise Linux infrastructure, centralize system and application logs, visualize operational metrics, and automate deployments using modern DevOps practices.
 
-The platform provides real-time monitoring of server health, website availability, application performance, centralized log management, dashboard visualization, automated alerting, and infrastructure automation. It is designed to evolve from a traditional virtual machine deployment into a cloud-native platform using containerization, cloud services, and CI/CD automation.
+The project demonstrates two deployment approaches:
+
+- **Traditional VM-Based Deployment** using Linux virtual machines.
+- **Cloud-Native Deployment** using Docker containers, AWS infrastructure, and Jenkins CI/CD.
+
+This progression showcases the migration of enterprise infrastructure from conventional server-based environments to scalable cloud-native architectures.
 
 ---
 
-# 🎯 Objectives
+# 🎯 Project Objectives
 
 - Monitor enterprise Linux infrastructure
 - Collect real-time system metrics
-- Monitor CPU, Memory, Disk and Network utilization
-- Monitor website availability
-- Monitor Nginx performance
 - Centralize system and application logs
+- Monitor website availability
+- Visualize infrastructure health
 - Generate automated alerts
-- Visualize infrastructure health using dashboards
-- Automate deployments
-- Support cloud-native infrastructure
+- Implement infrastructure automation
+- Demonstrate cloud-native deployment
+- Build CI/CD pipelines
+- Showcase modern DevOps practices
 
 ---
 
-# 🏗️ System Architecture
+# 🏗️ Deployment Models
 
-The project consists of three Linux Virtual Machines.
+## 🖥️ Local Infrastructure Deployment
 
-## Monitoring Server (Ubuntu)
+Traditional deployment using three Linux Virtual Machines.
 
-### Installed Services
+### Monitoring Server (Ubuntu)
 
 - Prometheus
 - Grafana
 - Alertmanager
 - Blackbox Exporter
 
-### Responsibilities
-
-- Collect Metrics
-- Store Metrics
-- Dashboard Visualization
-- Alert Generation
-- Website Monitoring
-
----
-
-## Web Server (Debian)
-
-### Installed Services
+### Web Server (Debian)
 
 - Nginx
 - Node Exporter
 - Nginx Exporter
 - Promtail
 
-### Responsibilities
-
-- Host Website
-- Export System Metrics
-- Export Nginx Metrics
-- Forward Logs to Loki
-
----
-
-## Log Server (CentOS Stream)
-
-### Installed Services
+### Log Server (CentOS Stream)
 
 - Loki
 - Promtail
 - Node Exporter
 
-### Responsibilities
+---
 
-- Centralized Log Storage
-- Log Collection
-- System Monitoring
+## ☁️ Cloud-Native Deployment
+
+Containerized deployment using Docker and cloud technologies.
+
+### Components
+
+- Docker Compose
+- Prometheus
+- Grafana
+- Loki
+- Promtail
+- Nginx
+- Jenkins
+- Jenkins Pipeline
+- AWS EC2
 
 ---
 
-# 📊 Monitoring Workflow
+# 📊 Architecture Evolution
 
-```
-Node Exporter
-        │
-        ▼
-   Prometheus
-        │
-        ▼
-    Grafana
-```
+```text
+                    Enterprise Monitoring Platform
 
----
-
-# 📝 Logging Workflow
-
-```
-Application Logs
-        │
-        ▼
-    Promtail
-        │
-        ▼
-       Loki
-        │
-        ▼
-    Grafana
-```
-
----
-
-# 🚨 Alert Workflow
-
-```
-Prometheus
-      │
-      ▼
-Alertmanager
-      │
-      ▼
- Email Notifications
+                Traditional Infrastructure
+                        │
+                        ▼
+      Ubuntu + Debian + CentOS Virtual Machines
+                        │
+                        ▼
+             Monitoring • Logging • Alerting
+                        │
+                        ▼
+              Containerization (Docker)
+                        │
+                        ▼
+                AWS Cloud Deployment
+                        │
+                        ▼
+                  Jenkins CI/CD Pipeline
 ```
 
 ---
 
 # ✨ Features
 
-- Infrastructure Monitoring
+### Infrastructure Monitoring
+
 - CPU Monitoring
 - Memory Monitoring
 - Disk Monitoring
 - Network Monitoring
-- Website Monitoring
-- Nginx Monitoring
-- Centralized Logging
-- Dashboard Visualization
-- Automated Alerting
-- Real-time Metrics Collection
+- Host Monitoring
+
+### Website Monitoring
+
+- Blackbox Exporter
+- HTTP Health Checks
+- Response Time Monitoring
+
+### Web Server Monitoring
+
+- Nginx Metrics
+- Active Connections
+- Request Monitoring
+
+### Centralized Logging
+
+- Loki
+- Promtail
 - Log Aggregation
-- Infrastructure Automation
-- Cloud-Native Ready Architecture
+- Log Querying
+
+### Visualization
+
+- Grafana Dashboards
+- Infrastructure Overview
+- Performance Analytics
+
+### Alerting
+
+- Alertmanager
+- Email Notifications
+- Infrastructure Alerts
+
+### Cloud & Automation
+
+- Docker Containerization
+- AWS Deployment
+- Jenkins CI/CD
+- Automated Deployment
 
 ---
 
 # 🛠️ Technology Stack
 
-## Operating Systems
-
-- Ubuntu Server
-- Debian
-- CentOS Stream
-
-## Monitoring
-
-- Prometheus
-- Node Exporter
-- Nginx Exporter
-- Blackbox Exporter
-
-## Logging
-
-- Loki
-- Promtail
-
-## Visualization
-
-- Grafana
-
-## Alerting
-
-- Alertmanager
-
-## Web Server
-
-- Nginx
-
-## Virtualization
-
-- VMware Workstation
-
-## Containerization
-
-- Docker *(Planned)*
-
-## Cloud Platform
-
-- AWS EC2 *(Planned)*
-
-## Automation
-
-- Jenkins *(Planned)*
-- CI/CD *(Planned)*
+| Category | Technologies |
+|----------|--------------|
+| Operating Systems | Ubuntu, Debian, CentOS Stream |
+| Monitoring | Prometheus, Node Exporter, Nginx Exporter, Blackbox Exporter |
+| Visualization | Grafana |
+| Logging | Loki, Promtail |
+| Alerting | Alertmanager |
+| Web Server | Nginx |
+| Virtualization | VMware Workstation |
+| Containerization | Docker, Docker Compose |
+| Cloud | AWS EC2 |
+| CI/CD | Jenkins |
+| Version Control | Git & GitHub |
 
 ---
 
@@ -216,30 +189,24 @@ Cloud-native-Enterprise-Infrastructure-Monitoring-log-management-Automation-Plat
 ├── .gitignore
 │
 ├── docs/
-│   ├── Architecture.md
-│   ├── Installation.md
-│   ├── UserGuide.md
-│   ├── diagrams/
-│   └── screenshots/
 │
 ├── monitoring-server/
-│   ├── prometheus/
-│   ├── grafana/
-│   ├── alertmanager/
-│   └── blackbox/
 │
 ├── web-server/
-│   ├── nginx/
-│   ├── node-exporter/
-│   ├── nginx-exporter/
-│   └── promtail/
 │
 ├── log-server/
-│   ├── loki/
-│   ├── promtail/
-│   └── node-exporter/
 │
 ├── scripts/
+│
+├── phase-2/
+│   ├── docker-compose.yml
+│   ├── prometheus/
+│   ├── grafana/
+│   ├── loki/
+│   ├── promtail/
+│   ├── nginx/
+│   ├── jenkins/
+│   └── Jenkinsfile
 │
 └── screenshots/
 ```
@@ -248,45 +215,38 @@ Cloud-native-Enterprise-Infrastructure-Monitoring-log-management-Automation-Plat
 
 # 📷 Screenshots
 
-The repository will include screenshots for:
+The repository includes screenshots for:
 
-- Grafana Dashboard
+- Grafana Dashboards
 - Prometheus Targets
-- Prometheus Alerts
 - Alertmanager
 - Loki Logs
-- Blackbox Exporter
-- Node Exporter Dashboard
-- Nginx Dashboard
-- Infrastructure Architecture
+- Website Monitoring
+- Docker Containers
+- Jenkins Pipeline
+- AWS Deployment
+- Architecture Diagrams
 
 ---
 
 # 🚀 Future Enhancements
 
-The platform will be extended with:
-
-- Docker Containerization
-- AWS EC2 Deployment
-- Jenkins CI/CD Pipeline
-- Infrastructure Automation
-- Kubernetes Deployment
-- High Availability
+- Kubernetes
+- Helm Charts
+- Prometheus Operator
+- Grafana Operator
+- Multi-Node Monitoring
 - Auto Scaling
-- Multi-Cloud Support
+- Disaster Recovery
 - Infrastructure as Code
+- GitHub Actions Integration
 - Advanced Security Monitoring
 
 ---
 
 # 📚 Documentation
 
-Detailed documentation is available in the **docs** directory.
-
-- Architecture Guide
-- Installation Guide
-- User Guide
-- Configuration Files
+Comprehensive documentation is available in the `docs/` directory, including architecture, installation, deployment, and user guides for both local and cloud-native environments.
 
 ---
 
@@ -300,4 +260,4 @@ Detailed documentation is available in the **docs** directory.
 
 # 📄 License
 
-This project is developed for educational and academic purposes as part of a Major Project.
+This project is licensed under the MIT License.
