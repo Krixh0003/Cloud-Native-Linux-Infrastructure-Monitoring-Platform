@@ -1,303 +1,190 @@
 # 🚀 Cloud-Native Enterprise Infrastructure Monitoring, Log Management & Automation Platform
 
-![Status](https://img.shields.io/badge/Status-Active-brightgreen)
-![Platform](https://img.shields.io/badge/Platform-Linux-blue)
-![Monitoring](https://img.shields.io/badge/Prometheus-Monitoring-orange)
-![Visualization](https://img.shields.io/badge/Grafana-Dashboard-red)
-![Logging](https://img.shields.io/badge/Loki-Logging-purple)
-![Cloud](https://img.shields.io/badge/AWS-Cloud-yellow)
-![Automation](https://img.shields.io/badge/Jenkins-CI%2FCD-red)
-![License](https://img.shields.io/badge/License-MIT-green)
+<p align="center">
+
+![Linux](https://img.shields.io/badge/Linux-Ubuntu%20|%20Debian%20|%20CentOS-E95420?style=for-the-badge&logo=linux&logoColor=white)
+![Prometheus](https://img.shields.io/badge/Prometheus-Monitoring-E6522C?style=for-the-badge&logo=prometheus&logoColor=white)
+![Grafana](https://img.shields.io/badge/Grafana-Dashboards-F46800?style=for-the-badge&logo=grafana&logoColor=white)
+![Loki](https://img.shields.io/badge/Loki-Logging-0A84FF?style=for-the-badge)
+![Nginx](https://img.shields.io/badge/Nginx-Web%20Server-009639?style=for-the-badge&logo=nginx&logoColor=white)
+![VMware](https://img.shields.io/badge/VMware-Virtualization-607078?style=for-the-badge)
+![AWS Ready](https://img.shields.io/badge/AWS-Cloud%20Ready-FF9900?style=for-the-badge&logo=amazonaws)
+![Docker](https://img.shields.io/badge/Docker-Planned-2496ED?style=for-the-badge&logo=docker)
+![Jenkins](https://img.shields.io/badge/Jenkins-CI%2FCD-D24939?style=for-the-badge&logo=jenkins)
+
+</p>
 
 ---
 
-# 📖 Project Overview
+## 📖 About The Project
 
-The **Cloud-Native Enterprise Infrastructure Monitoring, Log Management & Automation Platform** is an enterprise-grade monitoring, logging, visualization, and automation solution designed to monitor Linux-based infrastructure using open-source technologies.
+The **Cloud-Native Enterprise Infrastructure Monitoring, Log Management & Automation Platform** is an enterprise-inspired infrastructure observability solution that provides centralized monitoring, log management, visualization, and automated alerting for Linux-based enterprise servers.
 
-The platform provides real-time monitoring of server health, website availability, application performance, centralized log management, dashboard visualization, automated alerting, and infrastructure automation. It is designed to evolve from a traditional virtual machine deployment into a cloud-native platform using containerization, cloud services, and CI/CD automation.
+The platform is designed to simulate a real-world production monitoring environment using open-source technologies. It collects infrastructure metrics, monitors website availability, centralizes logs, visualizes system performance through interactive dashboards, and generates alerts for proactive infrastructure management.
 
----
+The project follows a progressive implementation approach:
 
-# 🎯 Objectives
+- **Current Implementation:** Traditional Linux Virtual Machine-based deployment
+- **Future Expansion:** Cloud-native deployment with Docker, AWS, Jenkins, and Infrastructure Automation
 
-- Monitor enterprise Linux infrastructure
-- Collect real-time system metrics
-- Monitor CPU, Memory, Disk and Network utilization
-- Monitor website availability
-- Monitor Nginx performance
-- Centralize system and application logs
-- Generate automated alerts
-- Visualize infrastructure health using dashboards
-- Automate deployments
-- Support cloud-native infrastructure
+This project demonstrates industry-standard monitoring practices used by DevOps Engineers, Site Reliability Engineers (SREs), Cloud Engineers, and System Administrators.
 
 ---
 
-# 🏗️ System Architecture
+# 🎯 Project Objectives
 
-The project consists of three Linux Virtual Machines.
+The primary objectives of this project are:
 
-## Monitoring Server (Ubuntu)
-
-### Installed Services
-
-- Prometheus
-- Grafana
-- Alertmanager
-- Blackbox Exporter
-
-### Responsibilities
-
-- Collect Metrics
-- Store Metrics
-- Dashboard Visualization
-- Alert Generation
-- Website Monitoring
+- Monitor enterprise Linux infrastructure in real time
+- Monitor CPU, Memory, Disk, and Network utilization
+- Monitor Nginx web server performance
+- Monitor website availability using Blackbox Exporter
+- Collect and centralize application and system logs
+- Visualize infrastructure health using Grafana dashboards
+- Generate automated alerts through Alertmanager
+- Implement enterprise monitoring best practices
+- Build a scalable and cloud-ready monitoring architecture
+- Prepare the infrastructure for future cloud-native deployment
 
 ---
 
-## Web Server (Debian)
+# ✨ Key Features
 
-### Installed Services
+## 📊 Infrastructure Monitoring
 
-- Nginx
-- Node Exporter
-- Nginx Exporter
-- Promtail
-
-### Responsibilities
-
-- Host Website
-- Export System Metrics
-- Export Nginx Metrics
-- Forward Logs to Loki
+- Real-time Linux server monitoring
+- CPU Utilization Monitoring
+- Memory Utilization Monitoring
+- Disk Usage Monitoring
+- Network Traffic Monitoring
+- Filesystem Monitoring
+- System Load Monitoring
+- Process Monitoring
 
 ---
 
-## Log Server (CentOS Stream)
+## 🌐 Website Monitoring
 
-### Installed Services
-
-- Loki
-- Promtail
-- Node Exporter
-
-### Responsibilities
-
-- Centralized Log Storage
-- Log Collection
-- System Monitoring
+- Website Availability Monitoring
+- HTTP Response Monitoring
+- Endpoint Health Checks
+- Response Time Monitoring
+- Website Uptime Monitoring
+- Blackbox Exporter Integration
 
 ---
 
-# 📊 Monitoring Workflow
+## 🖥️ Web Server Monitoring
 
-```
-Node Exporter
-        │
-        ▼
-   Prometheus
-        │
-        ▼
-    Grafana
-```
-
----
-
-# 📝 Logging Workflow
-
-```
-Application Logs
-        │
-        ▼
-    Promtail
-        │
-        ▼
-       Loki
-        │
-        ▼
-    Grafana
-```
-
----
-
-# 🚨 Alert Workflow
-
-```
-Prometheus
-      │
-      ▼
-Alertmanager
-      │
-      ▼
- Email Notifications
-```
-
----
-
-# ✨ Features
-
-- Infrastructure Monitoring
-- CPU Monitoring
-- Memory Monitoring
-- Disk Monitoring
-- Network Monitoring
-- Website Monitoring
 - Nginx Monitoring
-- Centralized Logging
-- Dashboard Visualization
-- Automated Alerting
-- Real-time Metrics Collection
+- Active Connections
+- Requests Per Second
+- Nginx Performance Metrics
+- Nginx Exporter Integration
+
+---
+
+## 📄 Centralized Log Management
+
+- System Log Collection
+- Application Log Collection
+- Centralized Log Storage
 - Log Aggregation
-- Infrastructure Automation
-- Cloud-Native Ready Architecture
+- Log Querying
+- Grafana Log Visualization
+- Loki Integration
+- Promtail Integration
 
 ---
 
-# 🛠️ Technology Stack
+## 📈 Visualization
 
-## Operating Systems
-
-- Ubuntu Server
-- Debian
-- CentOS Stream
-
-## Monitoring
-
-- Prometheus
-- Node Exporter
-- Nginx Exporter
-- Blackbox Exporter
-
-## Logging
-
-- Loki
-- Promtail
-
-## Visualization
-
-- Grafana
-
-## Alerting
-
-- Alertmanager
-
-## Web Server
-
-- Nginx
-
-## Virtualization
-
-- VMware Workstation
-
-## Containerization
-
-- Docker *(Planned)*
-
-## Cloud Platform
-
-- AWS EC2 *(Planned)*
-
-## Automation
-
-- Jenkins *(Planned)*
-- CI/CD *(Planned)*
+- Interactive Dashboards
+- Infrastructure Overview
+- Server Health Monitoring
+- Performance Dashboards
+- Resource Utilization Graphs
+- Real-Time Metrics
 
 ---
 
-# 📁 Repository Structure
+## 🚨 Alert Management
 
-```text
-Cloud-native-Enterprise-Infrastructure-Monitoring-log-management-Automation-Platform
-│
-├── README.md
-├── LICENSE
-├── .gitignore
-│
-├── docs/
-│   ├── Architecture.md
-│   ├── Installation.md
-│   ├── UserGuide.md
-│   ├── diagrams/
-│   └── screenshots/
-│
-├── monitoring-server/
-│   ├── prometheus/
-│   ├── grafana/
-│   ├── alertmanager/
-│   └── blackbox/
-│
-├── web-server/
-│   ├── nginx/
-│   ├── node-exporter/
-│   ├── nginx-exporter/
-│   └── promtail/
-│
-├── log-server/
-│   ├── loki/
-│   ├── promtail/
-│   └── node-exporter/
-│
-├── scripts/
-│
-└── screenshots/
-```
+- CPU Alerts
+- Memory Alerts
+- Disk Alerts
+- Website Down Alerts
+- Nginx Alerts
+- Host Down Alerts
+- Automated Notifications
 
 ---
 
-# 📷 Screenshots
+## ☁️ Cloud Ready
 
-The repository will include screenshots for:
-
-- Grafana Dashboard
-- Prometheus Targets
-- Prometheus Alerts
-- Alertmanager
-- Loki Logs
-- Blackbox Exporter
-- Node Exporter Dashboard
-- Nginx Dashboard
-- Infrastructure Architecture
-
----
-
-# 🚀 Future Enhancements
-
-The platform will be extended with:
+The architecture has been designed to support future enhancements such as:
 
 - Docker Containerization
 - AWS EC2 Deployment
 - Jenkins CI/CD Pipeline
-- Infrastructure Automation
 - Kubernetes Deployment
+- Infrastructure Automation
 - High Availability
 - Auto Scaling
-- Multi-Cloud Support
-- Infrastructure as Code
-- Advanced Security Monitoring
 
 ---
 
-# 📚 Documentation
+# 🌟 Project Highlights
 
-Detailed documentation is available in the **docs** directory.
+| Feature | Status |
+|----------|--------|
+| Linux Infrastructure Monitoring | ✅ |
+| Website Monitoring | ✅ |
+| Centralized Logging | ✅ |
+| Grafana Dashboards | ✅ |
+| Alertmanager | ✅ |
+| Prometheus | ✅ |
+| Loki | ✅ |
+| Nginx Monitoring | ✅ |
+| Cloud Ready Architecture | ✅ |
+| Docker Integration | 🔄 Planned |
+| AWS Deployment | 🔄 Planned |
+| Jenkins CI/CD | 🔄 Planned |
 
-- Architecture Guide
+---
+
+# 📊 Project Statistics
+
+| Category | Details |
+|-----------|----------|
+| Monitoring Servers | 3 Linux Virtual Machines |
+| Operating Systems | Ubuntu, Debian, CentOS Stream |
+| Monitoring Tools | Prometheus, Node Exporter, Nginx Exporter, Blackbox Exporter |
+| Logging Stack | Loki & Promtail |
+| Dashboard Platform | Grafana |
+| Alerting System | Alertmanager |
+| Web Server | Nginx |
+| Deployment Type | Traditional Virtual Machines |
+| Future Deployment | Cloud-Native |
+
+---
+
+# 📑 Table of Contents
+
+- About the Project
+- Project Objectives
+- Key Features
+- System Architecture
+- Monitoring Workflow
+- Logging Workflow
+- Alert Workflow
+- Technology Stack
+- Repository Structure
 - Installation Guide
-- User Guide
-- Configuration Files
+- Documentation
+- Screenshots
+- Future Roadmap
+- Author
+- License
 
 ---
-
-# 👨‍💻 Authors
-
-**Major Project Team**
-
-**Cloud-Native Enterprise Infrastructure Monitoring, Log Management & Automation Platform**
-
----
-
-# 📄 License
-
-This project is developed for educational and academic purposes as part of a Major Project.
