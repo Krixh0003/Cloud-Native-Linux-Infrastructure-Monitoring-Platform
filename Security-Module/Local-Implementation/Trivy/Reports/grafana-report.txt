@@ -1,0 +1,207 @@
+
+Report Summary
+
+┌──────────────────────────────────────────────────────────────────────────────────┬──────────┬─────────────────┬─────────┐
+│                                      Target                                      │   Type   │ Vulnerabilities │ Secrets │
+├──────────────────────────────────────────────────────────────────────────────────┼──────────┼─────────────────┼─────────┤
+│ grafana/grafana (alpine 3.24.1)                                                  │  alpine  │        0        │    -    │
+├──────────────────────────────────────────────────────────────────────────────────┼──────────┼─────────────────┼─────────┤
+│ usr/share/grafana/public/app/plugins/datasource/azuremonitor/package.json        │ node-pkg │        0        │    -    │
+├──────────────────────────────────────────────────────────────────────────────────┼──────────┼─────────────────┼─────────┤
+│ usr/share/grafana/public/app/plugins/datasource/cloud-monitoring/package.json    │ node-pkg │        0        │    -    │
+├──────────────────────────────────────────────────────────────────────────────────┼──────────┼─────────────────┼─────────┤
+│ usr/share/grafana/public/app/plugins/datasource/grafana-postgresql-datasource/p- │ node-pkg │        0        │    -    │
+│ ackage.json                                                                      │          │                 │         │
+├──────────────────────────────────────────────────────────────────────────────────┼──────────┼─────────────────┼─────────┤
+│ usr/share/grafana/public/app/plugins/datasource/grafana-pyroscope-datasource/pa- │ node-pkg │        0        │    -    │
+│ ckage.json                                                                       │          │                 │         │
+├──────────────────────────────────────────────────────────────────────────────────┼──────────┼─────────────────┼─────────┤
+│ usr/share/grafana/public/app/plugins/datasource/grafana-testdata-datasource/pac- │ node-pkg │        0        │    -    │
+│ kage.json                                                                        │          │                 │         │
+├──────────────────────────────────────────────────────────────────────────────────┼──────────┼─────────────────┼─────────┤
+│ usr/share/grafana/public/app/plugins/datasource/graphite/package.json            │ node-pkg │        0        │    -    │
+├──────────────────────────────────────────────────────────────────────────────────┼──────────┼─────────────────┼─────────┤
+│ usr/share/grafana/public/app/plugins/datasource/influxdb/package.json            │ node-pkg │        0        │    -    │
+├──────────────────────────────────────────────────────────────────────────────────┼──────────┼─────────────────┼─────────┤
+│ usr/share/grafana/public/app/plugins/datasource/jaeger/package.json              │ node-pkg │        0        │    -    │
+├──────────────────────────────────────────────────────────────────────────────────┼──────────┼─────────────────┼─────────┤
+│ usr/share/grafana/public/app/plugins/datasource/loki/package.json                │ node-pkg │        0        │    -    │
+├──────────────────────────────────────────────────────────────────────────────────┼──────────┼─────────────────┼─────────┤
+│ usr/share/grafana/public/app/plugins/datasource/mssql/package.json               │ node-pkg │        0        │    -    │
+├──────────────────────────────────────────────────────────────────────────────────┼──────────┼─────────────────┼─────────┤
+│ usr/share/grafana/public/app/plugins/datasource/mysql/package.json               │ node-pkg │        0        │    -    │
+├──────────────────────────────────────────────────────────────────────────────────┼──────────┼─────────────────┼─────────┤
+│ usr/share/grafana/public/app/plugins/datasource/opentsdb/package.json            │ node-pkg │        0        │    -    │
+├──────────────────────────────────────────────────────────────────────────────────┼──────────┼─────────────────┼─────────┤
+│ usr/share/grafana/public/app/plugins/datasource/parca/package.json               │ node-pkg │        0        │    -    │
+├──────────────────────────────────────────────────────────────────────────────────┼──────────┼─────────────────┼─────────┤
+│ usr/share/grafana/public/app/plugins/datasource/tempo/package.json               │ node-pkg │        0        │    -    │
+├──────────────────────────────────────────────────────────────────────────────────┼──────────┼─────────────────┼─────────┤
+│ usr/share/grafana/bin/grafana                                                    │ gobinary │        9        │    -    │
+├──────────────────────────────────────────────────────────────────────────────────┼──────────┼─────────────────┼─────────┤
+│ usr/share/grafana/data/plugins-bundled/elasticsearch/gpx_grafana_elasticsearch_- │ gobinary │        9        │    -    │
+│ datasource_linux_amd64                                                           │          │                 │         │
+├──────────────────────────────────────────────────────────────────────────────────┼──────────┼─────────────────┼─────────┤
+│ usr/share/grafana/data/plugins-bundled/zipkin/gpx_grafana-zipkin-datasource_lin- │ gobinary │       16        │    -    │
+│ ux_amd64                                                                         │          │                 │         │
+└──────────────────────────────────────────────────────────────────────────────────┴──────────┴─────────────────┴─────────┘
+Legend:
+- '-': Not scanned
+- '0': Clean (no security findings detected)
+
+
+usr/share/grafana/bin/grafana (gobinary)
+========================================
+Total: 9 (UNKNOWN: 2, LOW: 0, MEDIUM: 2, HIGH: 4, CRITICAL: 1)
+
+┌───────────────────────────────┬─────────────────────┬──────────┬──────────┬──────────────────────────────────────┬──────────────────────┬────────────────────────────────────────────────────────────┐
+│            Library            │    Vulnerability    │ Severity │  Status  │          Installed Version           │    Fixed Version     │                           Title                            │
+├───────────────────────────────┼─────────────────────┼──────────┼──────────┼──────────────────────────────────────┼──────────────────────┼────────────────────────────────────────────────────────────┤
+│ github.com/getkin/kin-openapi │ GHSA-r277-6w6q-xmqw │ CRITICAL │ fixed    │ v0.140.0                             │ 0.144.0              │ kin-openapi: ValidationHandler.Load() Fail-Open            │
+│                               │                     │          │          │                                      │                      │ Authentication Bypass via NoopAuthenticationFunc Default   │
+│                               │                     │          │          │                                      │                      │ https://github.com/advisories/GHSA-r277-6w6q-xmqw          │
+│                               ├─────────────────────┼──────────┤          │                                      │                      ├────────────────────────────────────────────────────────────┤
+│                               │ GHSA-jpcw-4wr7-c3vq │ MEDIUM   │          │                                      │                      │ kin-openapi openapi3filter: unauthenticated nil-pointer    │
+│                               │                     │          │          │                                      │                      │ panic when validating a request against a `content`...     │
+│                               │                     │          │          │                                      │                      │ https://github.com/advisories/GHSA-jpcw-4wr7-c3vq          │
+├───────────────────────────────┼─────────────────────┤          │          ├──────────────────────────────────────┼──────────────────────┼────────────────────────────────────────────────────────────┤
+│ github.com/google/cel-go      │ GHSA-gcjh-h69q-9w9g │          │          │ v0.28.1                              │ 0.29.0               │ cel-go: JSON Private Fields Exposed via NativeTypes and    │
+│                               │                     │          │          │                                      │                      │ ParseStructTag                                             │
+│                               │                     │          │          │                                      │                      │ https://github.com/advisories/GHSA-gcjh-h69q-9w9g          │
+├───────────────────────────────┼─────────────────────┼──────────┤          ├──────────────────────────────────────┼──────────────────────┼────────────────────────────────────────────────────────────┤
+│ github.com/grafana/tempo      │ CVE-2026-21728      │ HIGH     │          │ v1.5.1-0.20260427112133-525d1bab07e0 │ 2.8.4, 2.9.2, 2.10.2 │ grafana/tempo: Tempo: Denial of Service via large queries  │
+│                               │                     │          │          │                                      │                      │ https://avd.aquasec.com/nvd/cve-2026-21728                 │
+│                               ├─────────────────────┤          │          │                                      ├──────────────────────┼────────────────────────────────────────────────────────────┤
+│                               │ CVE-2026-28377      │          │          │                                      │ 2.10.3               │ Grafana Tempo: Grafana Tempo: Information disclosure of S3 │
+│                               │                     │          │          │                                      │                      │ encryption key via status...                               │
+│                               │                     │          │          │                                      │                      │ https://avd.aquasec.com/nvd/cve-2026-28377                 │
+├───────────────────────────────┼─────────────────────┼──────────┼──────────┼──────────────────────────────────────┼──────────────────────┼────────────────────────────────────────────────────────────┤
+│ golang.org/x/crypto           │ GO-2026-5932        │ UNKNOWN  │ affected │ v0.52.0                              │                      │ The golang.org/x/crypto/openpgp package is unmaintained,   │
+│                               │                     │          │          │                                      │                      │ unsafe by design, and has known security...                │
+├───────────────────────────────┼─────────────────────┤          ├──────────┼──────────────────────────────────────┼──────────────────────┼────────────────────────────────────────────────────────────┤
+│ golang.org/x/net              │ CVE-2026-46600      │          │ fixed    │ v0.55.0                              │ 0.56.0               │ Parsing an invalid SVCB or HTTPS RR can panic when the     │
+│                               │                     │          │          │                                      │                      │ size...                                                    │
+│                               │                     │          │          │                                      │                      │ https://avd.aquasec.com/nvd/cve-2026-46600                 │
+├───────────────────────────────┼─────────────────────┼──────────┤          ├──────────────────────────────────────┼──────────────────────┼────────────────────────────────────────────────────────────┤
+│ golang.org/x/text             │ CVE-2026-56852      │ HIGH     │          │ v0.37.0                              │ 0.39.0               │ A norm.Iter can enter an infinite loop when handling input │
+│                               │                     │          │          │                                      │                      │ containing ...                                             │
+│                               │                     │          │          │                                      │                      │ https://avd.aquasec.com/nvd/cve-2026-56852                 │
+├───────────────────────────────┼─────────────────────┤          │          ├──────────────────────────────────────┼──────────────────────┼────────────────────────────────────────────────────────────┤
+│ google.golang.org/grpc        │ GHSA-hrxh-6v49-42gf │          │          │ v1.81.1                              │ 1.82.1               │ gRPC-Go: xDS RBAC and HTTP/2 Vulnerabilities               │
+│                               │                     │          │          │                                      │                      │ https://github.com/advisories/GHSA-hrxh-6v49-42gf          │
+└───────────────────────────────┴─────────────────────┴──────────┴──────────┴──────────────────────────────────────┴──────────────────────┴────────────────────────────────────────────────────────────┘
+
+usr/share/grafana/data/plugins-bundled/elasticsearch/gpx_grafana_elasticsearch_datasource_linux_amd64 (gobinary)
+================================================================================================================
+Total: 9 (UNKNOWN: 2, LOW: 0, MEDIUM: 2, HIGH: 5, CRITICAL: 0)
+
+┌────────────────────────┬─────────────────────┬──────────┬──────────┬───────────────────┬──────────────────────────────┬──────────────────────────────────────────────────────────────┐
+│        Library         │    Vulnerability    │ Severity │  Status  │ Installed Version │        Fixed Version         │                            Title                             │
+├────────────────────────┼─────────────────────┼──────────┼──────────┼───────────────────┼──────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ golang.org/x/crypto    │ GO-2026-5932        │ UNKNOWN  │ affected │ v0.52.0           │                              │ The golang.org/x/crypto/openpgp package is unmaintained,     │
+│                        │                     │          │          │                   │                              │ unsafe by design, and has known security...                  │
+├────────────────────────┼─────────────────────┤          ├──────────┼───────────────────┼──────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ golang.org/x/net       │ CVE-2026-46600      │          │ fixed    │ v0.55.0           │ 0.56.0                       │ Parsing an invalid SVCB or HTTPS RR can panic when the       │
+│                        │                     │          │          │                   │                              │ size...                                                      │
+│                        │                     │          │          │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-46600                   │
+├────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼──────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ golang.org/x/text      │ CVE-2026-56852      │ HIGH     │          │ v0.37.0           │ 0.39.0                       │ A norm.Iter can enter an infinite loop when handling input   │
+│                        │                     │          │          │                   │                              │ containing ...                                               │
+│                        │                     │          │          │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-56852                   │
+├────────────────────────┼─────────────────────┤          │          ├───────────────────┼──────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ google.golang.org/grpc │ GHSA-hrxh-6v49-42gf │          │          │ v1.80.0           │ 1.82.1                       │ gRPC-Go: xDS RBAC and HTTP/2 Vulnerabilities                 │
+│                        │                     │          │          │                   │                              │ https://github.com/advisories/GHSA-hrxh-6v49-42gf            │
+├────────────────────────┼─────────────────────┤          │          ├───────────────────┼──────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ stdlib                 │ CVE-2026-27145      │          │          │ v1.26.3           │ 1.25.11, 1.26.4              │ crypto/x509: golang: golang crypto/x509: Denial of Service   │
+│                        │                     │          │          │                   │                              │ via excessive processing of DNS...                           │
+│                        │                     │          │          │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-27145                   │
+│                        ├─────────────────────┤          │          │                   ├──────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2026-39822      │          │          │                   │ 1.25.12, 1.26.5, 1.27.0-rc.2 │ os: golang: Go os.Root: Symlink following vulnerability      │
+│                        │                     │          │          │                   │                              │ allows directory traversal                                   │
+│                        │                     │          │          │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-39822                   │
+│                        ├─────────────────────┤          │          │                   ├──────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2026-42504      │          │          │                   │ 1.25.11, 1.26.4              │ mime: golang: Golang MIME: Denial of Service via             │
+│                        │                     │          │          │                   │                              │ maliciously-crafted MIME header                              │
+│                        │                     │          │          │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-42504                   │
+│                        ├─────────────────────┼──────────┤          │                   ├──────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2026-42505      │ MEDIUM   │          │                   │ 1.25.12, 1.26.5, 1.27.0-rc.2 │ crypto/tls: golang: Go crypto/tls: Information disclosure in │
+│                        │                     │          │          │                   │                              │ Encrypted Client Hello                                       │
+│                        │                     │          │          │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-42505                   │
+│                        ├─────────────────────┤          │          │                   ├──────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2026-42507      │          │          │                   │ 1.25.11, 1.26.4              │ net/textproto: golang: Golang net/textproto: Misleading      │
+│                        │                     │          │          │                   │                              │ error messages via input injection                           │
+│                        │                     │          │          │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-42507                   │
+└────────────────────────┴─────────────────────┴──────────┴──────────┴───────────────────┴──────────────────────────────┴──────────────────────────────────────────────────────────────┘
+
+usr/share/grafana/data/plugins-bundled/zipkin/gpx_grafana-zipkin-datasource_linux_amd64 (gobinary)
+==================================================================================================
+Total: 16 (UNKNOWN: 2, LOW: 0, MEDIUM: 5, HIGH: 9, CRITICAL: 0)
+
+┌────────────────────────┬─────────────────────┬──────────┬────────┬───────────────────┬──────────────────────────────┬──────────────────────────────────────────────────────────────┐
+│        Library         │    Vulnerability    │ Severity │ Status │ Installed Version │        Fixed Version         │                            Title                             │
+├────────────────────────┼─────────────────────┼──────────┼────────┼───────────────────┼──────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ golang.org/x/net       │ CVE-2026-25681      │ HIGH     │ fixed  │ v0.49.0           │ 0.55.0                       │ golang.org/x/net/html: golang.org/x/net/html: Arbitrary code │
+│                        │                     │          │        │                   │                              │ execution via Cross-Site Scripting                           │
+│                        │                     │          │        │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-25681                   │
+│                        ├─────────────────────┤          │        │                   │                              ├──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2026-27136      │          │        │                   │                              │ golang.org/x/net/html: golang: golang.org/x/net/html:        │
+│                        │                     │          │        │                   │                              │ Cross-Site Scripting via HTML parsing bypass                 │
+│                        │                     │          │        │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-27136                   │
+│                        ├─────────────────────┤          │        │                   ├──────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2026-33814      │          │        │                   │ 0.53.0                       │ net/http/internal/http2: golang: golang.org/x/net: Go        │
+│                        │                     │          │        │                   │                              │ HTTP/2: Denial of Service via malformed                      │
+│                        │                     │          │        │                   │                              │ SETTINGS_MAX_FRAME_SIZE frame...                             │
+│                        │                     │          │        │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-33814                   │
+│                        ├─────────────────────┤          │        │                   ├──────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2026-39821      │          │        │                   │ 0.55.0                       │ golang.org/x/net/idna: golang: net/http:                     │
+│                        │                     │          │        │                   │                              │ golang.org/x/net/idna: Privilege escalation via incorrect    │
+│                        │                     │          │        │                   │                              │ Punycode label processing                                    │
+│                        │                     │          │        │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-39821                   │
+│                        ├─────────────────────┼──────────┤        │                   │                              ├──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2026-25680      │ MEDIUM   │        │                   │                              │ golang.org/x/net/html: golang.org/x/net/html: Denial of      │
+│                        │                     │          │        │                   │                              │ Service due to excessive HTML parsing                        │
+│                        │                     │          │        │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-25680                   │
+│                        ├─────────────────────┤          │        │                   │                              ├──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2026-42502      │          │        │                   │                              │ golang.org/x/net/html: golang: golang.org/x/net/html:        │
+│                        │                     │          │        │                   │                              │ Cross-Site Scripting via unexpected HTML tree rendering      │
+│                        │                     │          │        │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-42502                   │
+│                        ├─────────────────────┤          │        │                   │                              ├──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2026-42506      │          │        │                   │                              │ golang.org/x/net/html: golang.org/x/net/html: Cross-Site     │
+│                        │                     │          │        │                   │                              │ Scripting (XSS) via arbitrary HTML parsing                   │
+│                        │                     │          │        │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-42506                   │
+│                        ├─────────────────────┼──────────┤        │                   ├──────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2026-46600      │ UNKNOWN  │        │                   │ 0.56.0                       │ Parsing an invalid SVCB or HTTPS RR can panic when the       │
+│                        │                     │          │        │                   │                              │ size...                                                      │
+│                        │                     │          │        │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-46600                   │
+├────────────────────────┼─────────────────────┤          │        ├───────────────────┼──────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ golang.org/x/sys       │ CVE-2026-39824      │          │        │ v0.42.0           │ 0.44.0                       │ Invoking integer overflow in NewNTUnicodeString in           │
+│                        │                     │          │        │                   │                              │ golang.org/x/sys/windows                                     │
+│                        │                     │          │        │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-39824                   │
+├────────────────────────┼─────────────────────┼──────────┤        ├───────────────────┼──────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ golang.org/x/text      │ CVE-2026-56852      │ HIGH     │        │ v0.33.0           │ 0.39.0                       │ A norm.Iter can enter an infinite loop when handling input   │
+│                        │                     │          │        │                   │                              │ containing ...                                               │
+│                        │                     │          │        │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-56852                   │
+├────────────────────────┼─────────────────────┤          │        ├───────────────────┼──────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ google.golang.org/grpc │ GHSA-hrxh-6v49-42gf │          │        │ v1.79.3           │ 1.82.1                       │ gRPC-Go: xDS RBAC and HTTP/2 Vulnerabilities                 │
+│                        │                     │          │        │                   │                              │ https://github.com/advisories/GHSA-hrxh-6v49-42gf            │
+├────────────────────────┼─────────────────────┤          │        ├───────────────────┼──────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ stdlib                 │ CVE-2026-27145      │          │        │ v1.26.3           │ 1.25.11, 1.26.4              │ crypto/x509: golang: golang crypto/x509: Denial of Service   │
+│                        │                     │          │        │                   │                              │ via excessive processing of DNS...                           │
+│                        │                     │          │        │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-27145                   │
+│                        ├─────────────────────┤          │        │                   ├──────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2026-39822      │          │        │                   │ 1.25.12, 1.26.5, 1.27.0-rc.2 │ os: golang: Go os.Root: Symlink following vulnerability      │
+│                        │                     │          │        │                   │                              │ allows directory traversal                                   │
+│                        │                     │          │        │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-39822                   │
+│                        ├─────────────────────┤          │        │                   ├──────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2026-42504      │          │        │                   │ 1.25.11, 1.26.4              │ mime: golang: Golang MIME: Denial of Service via             │
+│                        │                     │          │        │                   │                              │ maliciously-crafted MIME header                              │
+│                        │                     │          │        │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-42504                   │
+│                        ├─────────────────────┼──────────┤        │                   ├──────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2026-42505      │ MEDIUM   │        │                   │ 1.25.12, 1.26.5, 1.27.0-rc.2 │ crypto/tls: golang: Go crypto/tls: Information disclosure in │
+│                        │                     │          │        │                   │                              │ Encrypted Client Hello                                       │
+│                        │                     │          │        │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-42505                   │
+│                        ├─────────────────────┤          │        │                   ├──────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2026-42507      │          │        │                   │ 1.25.11, 1.26.4              │ net/textproto: golang: Golang net/textproto: Misleading      │
+│                        │                     │          │        │                   │                              │ error messages via input injection                           │
+│                        │                     │          │        │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-42507                   │
+└────────────────────────┴─────────────────────┴──────────┴────────┴───────────────────┴──────────────────────────────┴──────────────────────────────────────────────────────────────┘

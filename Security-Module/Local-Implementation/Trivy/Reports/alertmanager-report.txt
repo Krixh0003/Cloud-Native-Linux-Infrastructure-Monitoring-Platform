@@ -1,0 +1,188 @@
+
+Report Summary
+
+┌──────────────────┬──────────┬─────────────────┬─────────┐
+│      Target      │   Type   │ Vulnerabilities │ Secrets │
+├──────────────────┼──────────┼─────────────────┼─────────┤
+│ bin/alertmanager │ gobinary │       19        │    -    │
+├──────────────────┼──────────┼─────────────────┼─────────┤
+│ bin/amtool       │ gobinary │       19        │    -    │
+└──────────────────┴──────────┴─────────────────┴─────────┘
+Legend:
+- '-': Not scanned
+- '0': Clean (no security findings detected)
+
+
+bin/alertmanager (gobinary)
+===========================
+Total: 19 (UNKNOWN: 2, LOW: 0, MEDIUM: 5, HIGH: 12, CRITICAL: 0)
+
+┌────────────────────────┬─────────────────────┬──────────┬──────────┬───────────────────┬──────────────────────────────┬──────────────────────────────────────────────────────────────┐
+│        Library         │    Vulnerability    │ Severity │  Status  │ Installed Version │        Fixed Version         │                            Title                             │
+├────────────────────────┼─────────────────────┼──────────┼──────────┼───────────────────┼──────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ golang.org/x/crypto    │ CVE-2026-39828      │ HIGH     │ fixed    │ v0.51.0           │ 0.52.0                       │ golang.org/x/crypto/ssh: golang.org/x/crypto/ssh:            │
+│                        │                     │          │          │                   │                              │ Unauthorized command execution via discarded SSH permissions │
+│                        │                     │          │          │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-39828                   │
+│                        ├─────────────────────┤          │          │                   │                              ├──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2026-39829      │          │          │                   │                              │ golang.org/x/crypto/ssh: golang.org/x/crypto/ssh: Denial of  │
+│                        │                     │          │          │                   │                              │ Service via crafted public key with excessive parameters...  │
+│                        │                     │          │          │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-39829                   │
+│                        ├─────────────────────┤          │          │                   │                              ├──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2026-39830      │          │          │                   │                              │ golang.org/x/crypto/ssh: golang.org/x/crypto/ssh: Denial of  │
+│                        │                     │          │          │                   │                              │ Service via resource leak from unsolicited SSH responses...  │
+│                        │                     │          │          │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-39830                   │
+│                        ├─────────────────────┤          │          │                   │                              ├──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2026-39831      │          │          │                   │                              │ golang.org/x/crypto/ssh: golang.org/x/crypto/ssh: Security   │
+│                        │                     │          │          │                   │                              │ key bypass due to missing user presence check                │
+│                        │                     │          │          │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-39831                   │
+│                        ├─────────────────────┤          │          │                   │                              ├──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2026-39832      │          │          │                   │                              │ golang.org/x/crypto/ssh/agent:                               │
+│                        │                     │          │          │                   │                              │ golang.org/x/crypto/ssh/agent: Security bypass due to        │
+│                        │                     │          │          │                   │                              │ improper handling of key restrictions                        │
+│                        │                     │          │          │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-39832                   │
+│                        ├─────────────────────┤          │          │                   │                              ├──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2026-39835      │          │          │                   │                              │ golang.org/x/crypto/ssh: golang: golang.org/x/crypto/ssh:    │
+│                        │                     │          │          │                   │                              │ Denial of Service via crafted SSH certificate                │
+│                        │                     │          │          │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-39835                   │
+│                        ├─────────────────────┤          │          │                   │                              ├──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2026-42508      │          │          │                   │                              │ golang.org/x/crypto/ssh/knownhosts: golang:                  │
+│                        │                     │          │          │                   │                              │ golang.org/x/crypto/ssh/knownhosts: Revocation bypass via    │
+│                        │                     │          │          │                   │                              │ unchecked SignatureKey                                       │
+│                        │                     │          │          │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-42508                   │
+│                        ├─────────────────────┤          │          │                   │                              ├──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2026-46595      │          │          │                   │                              │ golang.org/x/crypto/ssh: golang.org/x/crypto/ssh:            │
+│                        │                     │          │          │                   │                              │ Authorization bypass due to skipped source-address           │
+│                        │                     │          │          │                   │                              │ validation                                                   │
+│                        │                     │          │          │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-46595                   │
+│                        ├─────────────────────┤          │          │                   │                              ├──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2026-46597      │          │          │                   │                              │ golang.org/x/crypto/ssh: golang.org/x/crypto/ssh: Denial of  │
+│                        │                     │          │          │                   │                              │ Service via crafted AES-GCM packet decoder inputs            │
+│                        │                     │          │          │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-46597                   │
+│                        ├─────────────────────┼──────────┤          │                   │                              ├──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2026-39827      │ MEDIUM   │          │                   │                              │ golang.org/x/crypto/ssh: golang: golang.org/x/crypto/ssh:    │
+│                        │                     │          │          │                   │                              │ Denial of Service via repeated rejected channel openings     │
+│                        │                     │          │          │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-39827                   │
+│                        ├─────────────────────┤          │          │                   │                              ├──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2026-39833      │          │          │                   │                              │ golang.org/x/crypto/ssh/agent:                               │
+│                        │                     │          │          │                   │                              │ golang.org/x/crypto/ssh/agent: Security bypass due to        │
+│                        │                     │          │          │                   │                              │ unenforced key confirmation                                  │
+│                        │                     │          │          │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-39833                   │
+│                        ├─────────────────────┤          │          │                   │                              ├──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2026-39834      │          │          │                   │                              │ golang.org/x/crypto/ssh: golang: golang.org/x/crypto/ssh:    │
+│                        │                     │          │          │                   │                              │ Denial of Service due to integer overflow in SSH...          │
+│                        │                     │          │          │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-39834                   │
+│                        ├─────────────────────┤          │          │                   │                              ├──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2026-46598      │          │          │                   │                              │ golang.org/x/crypto/ssh/agent: golang:                       │
+│                        │                     │          │          │                   │                              │ golang.org/x/crypto/ssh/agent: Denial of Service via         │
+│                        │                     │          │          │                   │                              │ malformed input                                              │
+│                        │                     │          │          │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-46598                   │
+│                        ├─────────────────────┼──────────┼──────────┤                   ├──────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ GO-2026-5932        │ UNKNOWN  │ affected │                   │                              │ The golang.org/x/crypto/openpgp package is unmaintained,     │
+│                        │                     │          │          │                   │                              │ unsafe by design, and has known security...                  │
+├────────────────────────┼─────────────────────┤          ├──────────┼───────────────────┼──────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ golang.org/x/net       │ CVE-2026-46600      │          │ fixed    │ v0.55.0           │ 0.56.0                       │ Parsing an invalid SVCB or HTTPS RR can panic when the       │
+│                        │                     │          │          │                   │                              │ size...                                                      │
+│                        │                     │          │          │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-46600                   │
+├────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼──────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ golang.org/x/text      │ CVE-2026-56852      │ HIGH     │          │ v0.37.0           │ 0.39.0                       │ A norm.Iter can enter an infinite loop when handling input   │
+│                        │                     │          │          │                   │                              │ containing ...                                               │
+│                        │                     │          │          │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-56852                   │
+├────────────────────────┼─────────────────────┤          │          ├───────────────────┼──────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ google.golang.org/grpc │ GHSA-hrxh-6v49-42gf │          │          │ v1.80.0           │ 1.82.1                       │ gRPC-Go: xDS RBAC and HTTP/2 Vulnerabilities                 │
+│                        │                     │          │          │                   │                              │ https://github.com/advisories/GHSA-hrxh-6v49-42gf            │
+├────────────────────────┼─────────────────────┤          │          ├───────────────────┼──────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ stdlib                 │ CVE-2026-39822      │          │          │ v1.26.4           │ 1.25.12, 1.26.5, 1.27.0-rc.2 │ os: golang: Go os.Root: Symlink following vulnerability      │
+│                        │                     │          │          │                   │                              │ allows directory traversal                                   │
+│                        │                     │          │          │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-39822                   │
+│                        ├─────────────────────┼──────────┤          │                   │                              ├──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2026-42505      │ MEDIUM   │          │                   │                              │ crypto/tls: golang: Go crypto/tls: Information disclosure in │
+│                        │                     │          │          │                   │                              │ Encrypted Client Hello                                       │
+│                        │                     │          │          │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-42505                   │
+└────────────────────────┴─────────────────────┴──────────┴──────────┴───────────────────┴──────────────────────────────┴──────────────────────────────────────────────────────────────┘
+
+bin/amtool (gobinary)
+=====================
+Total: 19 (UNKNOWN: 2, LOW: 0, MEDIUM: 5, HIGH: 12, CRITICAL: 0)
+
+┌────────────────────────┬─────────────────────┬──────────┬──────────┬───────────────────┬──────────────────────────────┬──────────────────────────────────────────────────────────────┐
+│        Library         │    Vulnerability    │ Severity │  Status  │ Installed Version │        Fixed Version         │                            Title                             │
+├────────────────────────┼─────────────────────┼──────────┼──────────┼───────────────────┼──────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ golang.org/x/crypto    │ CVE-2026-39828      │ HIGH     │ fixed    │ v0.51.0           │ 0.52.0                       │ golang.org/x/crypto/ssh: golang.org/x/crypto/ssh:            │
+│                        │                     │          │          │                   │                              │ Unauthorized command execution via discarded SSH permissions │
+│                        │                     │          │          │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-39828                   │
+│                        ├─────────────────────┤          │          │                   │                              ├──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2026-39829      │          │          │                   │                              │ golang.org/x/crypto/ssh: golang.org/x/crypto/ssh: Denial of  │
+│                        │                     │          │          │                   │                              │ Service via crafted public key with excessive parameters...  │
+│                        │                     │          │          │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-39829                   │
+│                        ├─────────────────────┤          │          │                   │                              ├──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2026-39830      │          │          │                   │                              │ golang.org/x/crypto/ssh: golang.org/x/crypto/ssh: Denial of  │
+│                        │                     │          │          │                   │                              │ Service via resource leak from unsolicited SSH responses...  │
+│                        │                     │          │          │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-39830                   │
+│                        ├─────────────────────┤          │          │                   │                              ├──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2026-39831      │          │          │                   │                              │ golang.org/x/crypto/ssh: golang.org/x/crypto/ssh: Security   │
+│                        │                     │          │          │                   │                              │ key bypass due to missing user presence check                │
+│                        │                     │          │          │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-39831                   │
+│                        ├─────────────────────┤          │          │                   │                              ├──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2026-39832      │          │          │                   │                              │ golang.org/x/crypto/ssh/agent:                               │
+│                        │                     │          │          │                   │                              │ golang.org/x/crypto/ssh/agent: Security bypass due to        │
+│                        │                     │          │          │                   │                              │ improper handling of key restrictions                        │
+│                        │                     │          │          │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-39832                   │
+│                        ├─────────────────────┤          │          │                   │                              ├──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2026-39835      │          │          │                   │                              │ golang.org/x/crypto/ssh: golang: golang.org/x/crypto/ssh:    │
+│                        │                     │          │          │                   │                              │ Denial of Service via crafted SSH certificate                │
+│                        │                     │          │          │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-39835                   │
+│                        ├─────────────────────┤          │          │                   │                              ├──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2026-42508      │          │          │                   │                              │ golang.org/x/crypto/ssh/knownhosts: golang:                  │
+│                        │                     │          │          │                   │                              │ golang.org/x/crypto/ssh/knownhosts: Revocation bypass via    │
+│                        │                     │          │          │                   │                              │ unchecked SignatureKey                                       │
+│                        │                     │          │          │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-42508                   │
+│                        ├─────────────────────┤          │          │                   │                              ├──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2026-46595      │          │          │                   │                              │ golang.org/x/crypto/ssh: golang.org/x/crypto/ssh:            │
+│                        │                     │          │          │                   │                              │ Authorization bypass due to skipped source-address           │
+│                        │                     │          │          │                   │                              │ validation                                                   │
+│                        │                     │          │          │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-46595                   │
+│                        ├─────────────────────┤          │          │                   │                              ├──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2026-46597      │          │          │                   │                              │ golang.org/x/crypto/ssh: golang.org/x/crypto/ssh: Denial of  │
+│                        │                     │          │          │                   │                              │ Service via crafted AES-GCM packet decoder inputs            │
+│                        │                     │          │          │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-46597                   │
+│                        ├─────────────────────┼──────────┤          │                   │                              ├──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2026-39827      │ MEDIUM   │          │                   │                              │ golang.org/x/crypto/ssh: golang: golang.org/x/crypto/ssh:    │
+│                        │                     │          │          │                   │                              │ Denial of Service via repeated rejected channel openings     │
+│                        │                     │          │          │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-39827                   │
+│                        ├─────────────────────┤          │          │                   │                              ├──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2026-39833      │          │          │                   │                              │ golang.org/x/crypto/ssh/agent:                               │
+│                        │                     │          │          │                   │                              │ golang.org/x/crypto/ssh/agent: Security bypass due to        │
+│                        │                     │          │          │                   │                              │ unenforced key confirmation                                  │
+│                        │                     │          │          │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-39833                   │
+│                        ├─────────────────────┤          │          │                   │                              ├──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2026-39834      │          │          │                   │                              │ golang.org/x/crypto/ssh: golang: golang.org/x/crypto/ssh:    │
+│                        │                     │          │          │                   │                              │ Denial of Service due to integer overflow in SSH...          │
+│                        │                     │          │          │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-39834                   │
+│                        ├─────────────────────┤          │          │                   │                              ├──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2026-46598      │          │          │                   │                              │ golang.org/x/crypto/ssh/agent: golang:                       │
+│                        │                     │          │          │                   │                              │ golang.org/x/crypto/ssh/agent: Denial of Service via         │
+│                        │                     │          │          │                   │                              │ malformed input                                              │
+│                        │                     │          │          │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-46598                   │
+│                        ├─────────────────────┼──────────┼──────────┤                   ├──────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ GO-2026-5932        │ UNKNOWN  │ affected │                   │                              │ The golang.org/x/crypto/openpgp package is unmaintained,     │
+│                        │                     │          │          │                   │                              │ unsafe by design, and has known security...                  │
+├────────────────────────┼─────────────────────┤          ├──────────┼───────────────────┼──────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ golang.org/x/net       │ CVE-2026-46600      │          │ fixed    │ v0.55.0           │ 0.56.0                       │ Parsing an invalid SVCB or HTTPS RR can panic when the       │
+│                        │                     │          │          │                   │                              │ size...                                                      │
+│                        │                     │          │          │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-46600                   │
+├────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼──────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ golang.org/x/text      │ CVE-2026-56852      │ HIGH     │          │ v0.37.0           │ 0.39.0                       │ A norm.Iter can enter an infinite loop when handling input   │
+│                        │                     │          │          │                   │                              │ containing ...                                               │
+│                        │                     │          │          │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-56852                   │
+├────────────────────────┼─────────────────────┤          │          ├───────────────────┼──────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ google.golang.org/grpc │ GHSA-hrxh-6v49-42gf │          │          │ v1.80.0           │ 1.82.1                       │ gRPC-Go: xDS RBAC and HTTP/2 Vulnerabilities                 │
+│                        │                     │          │          │                   │                              │ https://github.com/advisories/GHSA-hrxh-6v49-42gf            │
+├────────────────────────┼─────────────────────┤          │          ├───────────────────┼──────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ stdlib                 │ CVE-2026-39822      │          │          │ v1.26.4           │ 1.25.12, 1.26.5, 1.27.0-rc.2 │ os: golang: Go os.Root: Symlink following vulnerability      │
+│                        │                     │          │          │                   │                              │ allows directory traversal                                   │
+│                        │                     │          │          │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-39822                   │
+│                        ├─────────────────────┼──────────┤          │                   │                              ├──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2026-42505      │ MEDIUM   │          │                   │                              │ crypto/tls: golang: Go crypto/tls: Information disclosure in │
+│                        │                     │          │          │                   │                              │ Encrypted Client Hello                                       │
+│                        │                     │          │          │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-42505                   │
+└────────────────────────┴─────────────────────┴──────────┴──────────┴───────────────────┴──────────────────────────────┴──────────────────────────────────────────────────────────────┘
