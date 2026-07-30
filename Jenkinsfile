@@ -3,32 +3,22 @@ pipeline {
 
     stages {
 
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
-
         stage('Deploy Monitoring Stack') {
             steps {
                 sh '''
-                ssh -o StrictHostKeyChecking=no ubuntu@172.31.47.32 << 'EOF'
-                cd /home/ubuntu/Cloud-native-Enterprise-Infrastructure-Monitoring-log-management-Automation-Platform
-
-                git pull origin main
-
-                docker compose -f docker-compose.monitoring.yml up -d
-                EOF
+                ssh -o StrictHostKeyChecking=no ubuntu@172.31.47.32 "
+                cd /home/ubuntu/Cloud-native-Enterprise-Infrastructure-Monitoring-log-management-Automation-Platform &&
+                git pull origin main &&
+                docker compose -f docker-compose.monitoring.yml up -d --remove-orphans
+                "
                 '''
             }
         }
 
-        stage('Verify') {
+        stage('Verify Deployment') {
             steps {
                 sh '''
-                ssh -o StrictHostKeyChecking=no ubuntu@172.31.47.32 << 'EOF'
-                docker ps
-                EOF
+                ssh -o StrictHostKeyChecking=no ubuntu@172.31.47.32 "docker ps"
                 '''
             }
         }
@@ -38,7 +28,6 @@ pipeline {
         success {
             echo 'Deployment Successful'
         }
-
         failure {
             echo 'Deployment Failed'
         }
