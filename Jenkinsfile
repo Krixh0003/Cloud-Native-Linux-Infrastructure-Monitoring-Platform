@@ -3,7 +3,6 @@ pipeline {
 
     options {
         timestamps()
-        ansiColor('xterm')
     }
 
     environment {
@@ -38,7 +37,7 @@ pipeline {
                     docker ps
 
                     echo ""
-                    echo "========== Docker Compose =========="
+                    echo "========== Docker Compose Projects =========="
                     docker compose ls
                 '
                 """
@@ -47,17 +46,12 @@ pipeline {
     }
 
     post {
-
         success {
-            echo "===================================="
             echo "Deployment Successful"
-            echo "===================================="
         }
 
         failure {
-            echo "===================================="
             echo "Deployment Failed"
-            echo "===================================="
         }
 
         always {
