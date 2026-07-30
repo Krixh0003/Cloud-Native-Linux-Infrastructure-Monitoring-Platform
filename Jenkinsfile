@@ -10,14 +10,17 @@ pipeline {
     }
 
     stages {
+       stage('Update Repository') {
+           steps {
+               sh '''
+               git config --global --add safe.directory /workspace/project
 
-        stage('Update Repository') {
-            steps {
-                sh '''
-                cd $PROJECT_DIR
-                git pull origin main
-                '''
-            }
+               cd /workspace/project
+
+               git pull origin main
+               '''
+           }
+
         }
 
         stage('Validate Docker Compose') {
