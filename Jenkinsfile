@@ -1,60 +1,57 @@
 pipeline {
     agent any
 
-    options {
-        timestamps()
-    }
-
-    environment {
-        PROJECT_DIR = "/workspace/project"
-    }
-
     stages {
-       stage('Update Repository') {
-           steps {
-               sh '''
-               git config --global --add safe.directory /workspace/project
 
-               cd /workspace/project
-
-               git pull origin main
-               '''
-           }
-
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
         }
 
         stage('Validate Docker Compose') {
             steps {
                 sh '''
-                cd $PROJECT_DIR
-                docker compose config
+                ssh -o StrictHostKeyChecking=no ubuntu@172.31.47.32 '
+                    cd /home/ubuntu/Cloud-native-Enterprise-Infrastructure-Monitoring-log-management-Automation-Platform
+                    docker compose config > /dev/null
+                '
                 '''
             }
         }
 
-        stage('Deploy Monitoring Stack') {
+        stage('Deploy') {
             steps {
                 sh '''
-                cd $PROJECT_DIR
-                docker compose up -d
+                ssh -o StrictHostKeyChecking=no ubuntu@172.31.47.32 '
+                    cd /home/ubuntu/Cloud-native-Enterprise-Infrastructure-Monitoring-log-management-Automation-Platform
+
+                    git pull origin main
+
+                    docker compose up -d
+                '
                 '''
             }
         }
 
-        stage('Verify Running Containers') {
+        stage('Verify Containers') {
             steps {
-                sh 'docker ps'
+                sh '''
+                ssh -o StrictHostKeyChecking=no ubuntu@172.31.47.32 '
+                    docker ps
+                '
+                '''
             }
         }
     }
 
     post {
         success {
-            echo 'Deployment completed successfully.'
+            echo 'Deployment Successful'
         }
 
         failure {
-            echo 'Deployment failed.'
+            echo 'Deployment Failed'
         }
     }
 }

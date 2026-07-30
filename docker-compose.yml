@@ -186,9 +186,6 @@ services:
       # Docker Compose plugin
       - /usr/libexec/docker/cli-plugins:/usr/libexec/docker/cli-plugins:ro
 
-      # ⭐ Mount your production project
-      - /home/ubuntu/Cloud-native-Enterprise-Infrastructure-Monitoring-log-management-Automation-Platform:/workspace/project
-
     networks:
       - monitoring
 
