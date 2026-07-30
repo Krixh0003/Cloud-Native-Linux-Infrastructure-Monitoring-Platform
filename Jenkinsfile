@@ -1,11 +1,35 @@
 pipeline {
     agent any
 
+    options {
+        timestamps()
+    }
+
     stages {
 
-        stage('Checkout') {
+        stage('Create Environment File') {
             steps {
-                checkout scm
+                writeFile file: '.env', text: '''
+GF_SECURITY_ADMIN_USER=admin
+GF_SECURITY_ADMIN_PASSWORD=admin
+
+PROMETHEUS_CONTAINER=prometheus
+PROMETHEUS_PORT=9090
+
+GRAFANA_CONTAINER=grafana
+GRAFANA_PORT=3000
+
+LOKI_CONTAINER=loki
+LOKI_PORT=3100
+
+ALERTMANAGER_CONTAINER=alertmanager
+ALERTMANAGER_PORT=9093
+
+BLACKBOX_CONTAINER=blackbox-exporter
+BLACKBOX_PORT=9115
+
+TZ=Asia/Kolkata
+'''
             }
         }
 
@@ -21,7 +45,7 @@ pipeline {
             }
         }
 
-        stage('Verify Containers') {
+        stage('Verify Running Containers') {
             steps {
                 sh 'docker ps'
             }
@@ -30,11 +54,11 @@ pipeline {
 
     post {
         success {
-            echo 'Deployment completed successfully.'
+            echo '✅ Deployment completed successfully.'
         }
 
         failure {
-            echo 'Deployment failed.'
+            echo '❌ Deployment failed.'
         }
     }
 }
