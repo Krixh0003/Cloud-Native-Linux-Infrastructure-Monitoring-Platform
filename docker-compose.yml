@@ -1,3 +1,5 @@
+name: cloud-native-enterprise-infrastructure-monitoring-log-management-automation-platform
+
 services:
 
   prometheus:
@@ -159,16 +161,14 @@ services:
     networks:
       - monitoring
 
-
   jenkins:
     image: jenkins/jenkins:lts-jdk21
     container_name: jenkins
     restart: unless-stopped
-
     user: root
 
     environment:
-      TZ: ${TZ}
+      TZ: Asia/Kolkata
 
     ports:
       - "8080:8080"
@@ -176,8 +176,18 @@ services:
 
     volumes:
       - jenkins-data:/var/jenkins_home
+
+      # Docker socket
       - /var/run/docker.sock:/var/run/docker.sock
-      - /usr/bin/docker:/usr/bin/docker
+
+      # Docker CLI
+      - /usr/bin/docker:/usr/bin/docker:ro
+
+      # Docker Compose plugin
+      - /usr/libexec/docker/cli-plugins:/usr/libexec/docker/cli-plugins:ro
+
+      # ⭐ Mount your production project
+      - /home/ubuntu/Cloud-native-Enterprise-Infrastructure-Monitoring-log-management-Automation-Platform:/workspace/project
 
     networks:
       - monitoring
