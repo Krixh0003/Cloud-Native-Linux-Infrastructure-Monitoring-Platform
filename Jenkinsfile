@@ -9,37 +9,26 @@ pipeline {
             }
         }
 
-        stage('Validate Docker Compose') {
+        stage('Deploy Monitoring Stack') {
             steps {
                 sh '''
-                ssh -o StrictHostKeyChecking=no ubuntu@172.31.47.32 '
-                    cd /home/ubuntu/Cloud-native-Enterprise-Infrastructure-Monitoring-log-management-Automation-Platform
-                    docker compose config > /dev/null
-                '
+                ssh -o StrictHostKeyChecking=no ubuntu@172.31.47.32 << 'EOF'
+                cd /home/ubuntu/Cloud-native-Enterprise-Infrastructure-Monitoring-log-management-Automation-Platform
+
+                git pull origin main
+
+                docker compose -f docker-compose.monitoring.yml up -d
+                EOF
                 '''
             }
         }
 
-        stage('Deploy') {
+        stage('Verify') {
             steps {
                 sh '''
-                ssh -o StrictHostKeyChecking=no ubuntu@172.31.47.32 '
-                    cd /home/ubuntu/Cloud-native-Enterprise-Infrastructure-Monitoring-log-management-Automation-Platform
-
-                    git pull origin main
-
-                    docker compose up -d
-                '
-                '''
-            }
-        }
-
-        stage('Verify Containers') {
-            steps {
-                sh '''
-                ssh -o StrictHostKeyChecking=no ubuntu@172.31.47.32 '
-                    docker ps
-                '
+                ssh -o StrictHostKeyChecking=no ubuntu@172.31.47.32 << 'EOF'
+                docker ps
+                EOF
                 '''
             }
         }
