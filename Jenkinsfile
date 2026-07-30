@@ -5,60 +5,55 @@ pipeline {
         timestamps()
     }
 
+    environment {
+        PROJECT_DIR = "/home/ubuntu/Cloud-native-Enterprise-Infrastructure-Monitoring-log-management-Automation-Platform"
+    }
+
     stages {
 
-        stage('Create Environment File') {
+        stage('Update Repository') {
             steps {
-                writeFile file: '.env', text: '''
-GF_SECURITY_ADMIN_USER=admin
-GF_SECURITY_ADMIN_PASSWORD=admin
-
-PROMETHEUS_CONTAINER=prometheus
-PROMETHEUS_PORT=9090
-
-GRAFANA_CONTAINER=grafana
-GRAFANA_PORT=3000
-
-LOKI_CONTAINER=loki
-LOKI_PORT=3100
-
-ALERTMANAGER_CONTAINER=alertmanager
-ALERTMANAGER_PORT=9093
-
-BLACKBOX_CONTAINER=blackbox-exporter
-BLACKBOX_PORT=9115
-
-TZ=Asia/Kolkata
-'''
+                sh '''
+                cd $PROJECT_DIR
+                git pull origin main
+                '''
             }
         }
 
-        stage('Validate Docker Compose') {
+        stage('Validate Compose') {
             steps {
-                sh 'docker compose config'
+                sh '''
+                cd $PROJECT_DIR
+                docker compose config
+                '''
             }
         }
 
-        stage('Deploy Monitoring Stack') {
+        stage('Deploy') {
             steps {
-                sh 'docker compose up -d'
+                sh '''
+                cd $PROJECT_DIR
+                docker compose up -d
+                '''
             }
         }
 
-        stage('Verify Running Containers') {
+        stage('Verify') {
             steps {
-                sh 'docker ps'
+                sh '''
+                docker ps
+                '''
             }
         }
     }
 
     post {
         success {
-            echo '✅ Deployment completed successfully.'
+            echo 'Deployment Successful'
         }
 
         failure {
-            echo '❌ Deployment failed.'
+            echo 'Deployment Failed'
         }
     }
 }
