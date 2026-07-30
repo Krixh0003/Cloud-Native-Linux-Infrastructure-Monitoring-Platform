@@ -6,7 +6,7 @@ pipeline {
     }
 
     environment {
-        PROJECT_DIR = "/home/ubuntu/Cloud-native-Enterprise-Infrastructure-Monitoring-log-management-Automation-Platform"
+        PROJECT_DIR = "/workspace/project"
     }
 
     stages {
@@ -20,7 +20,7 @@ pipeline {
             }
         }
 
-        stage('Validate Compose') {
+        stage('Validate Docker Compose') {
             steps {
                 sh '''
                 cd $PROJECT_DIR
@@ -29,7 +29,7 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
+        stage('Deploy Monitoring Stack') {
             steps {
                 sh '''
                 cd $PROJECT_DIR
@@ -38,22 +38,20 @@ pipeline {
             }
         }
 
-        stage('Verify') {
+        stage('Verify Running Containers') {
             steps {
-                sh '''
-                docker ps
-                '''
+                sh 'docker ps'
             }
         }
     }
 
     post {
         success {
-            echo 'Deployment Successful'
+            echo 'Deployment completed successfully.'
         }
 
         failure {
-            echo 'Deployment Failed'
+            echo 'Deployment failed.'
         }
     }
 }
