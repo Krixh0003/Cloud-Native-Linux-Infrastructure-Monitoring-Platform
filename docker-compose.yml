@@ -116,6 +116,30 @@ services:
       - monitoring
 
 
+  node-exporter:
+    image: prom/node-exporter:v1.9.1
+    container_name: node-exporter
+    restart: unless-stopped
+
+    environment:
+      TZ: ${TZ}
+
+    ports:
+      - "9100:9100"
+
+    command:
+      - '--path.rootfs=/host'
+
+    pid: host
+
+    volumes:
+      - '/:/host:ro,rslave'
+
+    networks:
+      - monitoring
+
+
+
   promtail:
     image: grafana/promtail:3.5.5
     container_name: promtail
@@ -135,6 +159,29 @@ services:
     networks:
       - monitoring
 
+
+  jenkins:
+    image: jenkins/jenkins:lts-jdk21
+    container_name: jenkins
+    restart: unless-stopped
+
+    user: root
+
+    environment:
+      TZ: ${TZ}
+
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+
+    volumes:
+      - jenkins-data:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /usr/bin/docker:/usr/bin/docker
+
+    networks:
+      - monitoring
+
 networks:
   monitoring:
     driver: bridge
@@ -144,3 +191,4 @@ volumes:
   prometheus-data:
   grafana-data:
   loki-data:
+  jenkins-data:
