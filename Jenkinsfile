@@ -22,10 +22,22 @@ pipeline {
                     echo "========== Pulling Latest Code =========="
                     git pull origin main
 
+                    echo ""
+                    echo "========== Pulling Latest Docker Images =========="
+                    docker compose -f docker-compose.monitoring.yml pull
+
+                    echo ""
                     echo "========== Starting Monitoring Stack =========="
                     docker compose -f docker-compose.monitoring.yml up -d
                 '
                 """
+            }
+        }
+
+        stage('Wait for Services') {
+            steps {
+                echo "Waiting 20 seconds for services to initialize..."
+                sleep(time: 20, unit: 'SECONDS')
             }
         }
 
@@ -43,49 +55,42 @@ pipeline {
                 """
             }
         }
+
+        stage('Health Check') {
+            steps {
+                sh """
+                ssh -o StrictHostKeyChecking=no ${REMOTE_USER}@${REMOTE_HOST} '
+
+                    echo ""
+                    echo "========== Health Checks =========="
+
+                    echo ""
+                    echo "Checking Prometheus..."
+                    curl -fs http://localhost:9090/-/healthy
+
+                    echo ""
+                    echo "Checking Alertmanager..."
+                    curl -fs http://localhost:9093/-/healthy
+
+                    echo ""
+                    echo "Checking Loki..."
+                    curl -fs http://localhost:3100/ready
+
+                    echo ""
+                    echo "Checking Nginx..."
+                    curl -fs http://localhost
+
+                    echo ""
+                    echo "Checking Nginx Status..."
+                    curl -fs http://localhost/nginx_status
+
+                    echo ""
+                    echo "All health checks passed."
+                '
+                """
+            }
+        }
     }
-       
-
-
-       stage('Wait for Services') {
-           steps {
-                   echo "Waiting 20 seconds for services to initialize..."
-                   sleep(time: 20, unit: 'SECONDS')
-                }
-          }
-       stage('Health Check') {
-           steps {
-               sh """
-               ssh -o StrictHostKeyChecking=no ${REMOTE_USER}@${REMOTE_HOST} '
-                   echo ""
-                   echo "========== Health Checks =========="
-
-                   echo ""
-                   echo "Checking Prometheus..."
-                   curl -fs http://localhost:9090/-/healthy
-
-                   echo ""
-                   echo "Checking Alertmanager..."
-                   curl -fs http://localhost:9093/-/healthy
-
-                   echo ""
-                   echo "Checking Loki..."
-                   curl -fs http://localhost:3100/ready
-
-                   echo ""
-                   echo "Checking Nginx..."
-                   curl -fs http://localhost
-
-                   echo ""
-                   echo "Checking Nginx Status..."
-                   curl -fs http://localhost/nginx_status
-
-                   echo ""
-                   echo "All health checks passed."
-               '
-               """
-           }
-       }
 
     post {
         success {
