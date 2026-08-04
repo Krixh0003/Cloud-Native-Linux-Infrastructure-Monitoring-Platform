@@ -121,13 +121,16 @@ pipeline {
                     cd ~/Cloud-native-Enterprise-Infrastructure-Monitoring-log-management-Automation-Platform
 
                     mkdir -p AWS-Security-Reports
+                    mkdir -p /home/ubuntu/trivy-cache
 
                     echo ""
                     echo "========== Running Trivy =========="
 
-                    sudo trivy image nginx:latest \
+                    sudo trivy image \
+                        --cache-dir /home/ubuntu/trivy-cache \
                         --format table \
-                        --output AWS-Security-Reports/trivy-report.txt
+                        --output AWS-Security-Reports/trivy-report.txt \
+                        nginx:latest
 
                     echo ""
                     echo "========== Running Lynis =========="
@@ -138,7 +141,13 @@ pipeline {
                         --report-file AWS-Security-Reports/lynis-report.dat
 
                     echo ""
-                    echo "Security Scan Completed."
+                    echo "========== Fixing Report Permissions =========="
+
+                    sudo chown -R ubuntu:ubuntu AWS-Security-Reports
+                    chmod -R 644 AWS-Security-Reports/*
+
+                    echo ""
+                    echo "Security Scan Completed Successfully."
 
                 '
                 """
