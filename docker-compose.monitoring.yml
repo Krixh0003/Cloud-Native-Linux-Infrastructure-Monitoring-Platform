@@ -117,6 +117,45 @@ services:
     networks:
       - monitoring
 
+  nginx:
+    image: nginx:latest
+    container_name: ${NGINX_CONTAINER}
+    restart: unless-stopped
+
+    environment:
+      TZ: ${TZ}
+
+    ports:
+      - "${NGINX_PORT}:80"
+
+    volumes:
+      - ./docker/nginx/html:/usr/share/nginx/html:ro
+      - ./docker/nginx/conf/default.conf:/etc/nginx/conf.d/default.conf:ro
+
+    networks:
+      - monitoring
+
+
+  nginx-exporter:
+    image: nginx/nginx-prometheus-exporter:1.4.2
+    container_name: ${NGINX_EXPORTER_CONTAINER}
+    restart: unless-stopped
+
+    environment:
+      TZ: ${TZ}
+
+    depends_on:
+      - nginx
+
+    command:
+      - -nginx.scrape-uri=http://nginx/nginx_status
+
+    ports:
+      - "${NGINX_EXPORTER_PORT}:9113"
+
+    networks:
+      - monitoring
+
 
   node-exporter:
     image: prom/node-exporter:v1.9.1

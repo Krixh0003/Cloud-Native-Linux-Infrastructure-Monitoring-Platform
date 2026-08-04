@@ -5,7 +5,6 @@ services:
     image: jenkins/jenkins:lts-jdk21
     container_name: jenkins
     user: root
-
     restart: unless-stopped
 
     ports:
@@ -16,10 +15,11 @@ services:
       TZ: Asia/Kolkata
 
     volumes:
-      - jenkins-data:/var/jenkins_home
+      - cloud-native-enterprise-infrastructure-monitoring-log-management-automation-platform_jenkins-data:/var/jenkins_home
       - /var/run/docker.sock:/var/run/docker.sock
       - /usr/bin/docker:/usr/bin/docker:ro
       - /usr/libexec/docker/cli-plugins:/usr/libexec/docker/cli-plugins:ro
 
 volumes:
-  jenkins-data:
+  cloud-native-enterprise-infrastructure-monitoring-log-management-automation-platform_jenkins-data:
+    external: true
